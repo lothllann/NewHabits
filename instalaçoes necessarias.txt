@@ -1,0 +1,73 @@
+BAKC-END
+
+TypeScript
+
+npm install typescript -D -> instalando o TS como dependencia de desenvolvimento
+npx tsc --init -> cria o tsconfig.json
+npm i tsx -D -> permiti executar um arquivo do Node com TypeScript sem fazer nenhuma conversão desse arquivo
+
+ZOD
+npm i zod
+biblioteca do TS para facilitar validações
+
+npm i dayjs 
+biblioteca de datas
+
+
+Prisma
+npm i -D prisma
+npm i @prisma/client 
+npx prisma init --datasource-provider SQLite
+npx prisma generate
+
+npx prisma migrate dev
+para atualizar as mudanças no banco
+
+npm install --save-dev tsx
+
+
+npm i -D prisma-erd-generator @mermaid-js/mermaid-cli
+para gerar um diagrama do BD
+
+SEED
+npx prisma db seed 
+
+CORS
+npm i @fastify/cors
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+FRONT-END
+
+npm create vite@latest
+npm i -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+npm i phosphor-react
+biblioteca de imagens
+
+npm install @radix-ui -> biblioteca de componentes 100% acessiveis
+
+npm i clsx - > biblioteca para facilitar condicionais de classe em CSS
+
+npm i axios -> biblioteca que diminui os codigos para fazer requisições HTTP
+
+-------------------------------------------------------------------------------------------------------------------------
+
+MOBILE
+
+npx-create-expo-app
+
+npx expo start --clear -> PARA INICIAR O PROJETO
+npm i nativewind
+npm i tailwindcss --save-dev
+npx tailwindcss init
+npx expo install react-native-svg
+npm i react-native-svg-transformer --save-dev 
+
+npm install @react-navigation/native -> navegação no mobile
+npx expo install react-native-screens react-native-safe-area-context -> garantir que os elementos vao ser renderizados na tela
+npm install @react-navigation/native-stack -> navegação em pilha
+
+npm i axios
