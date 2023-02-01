@@ -6,6 +6,7 @@ import * as Checkbox from "@radix-ui/react-checkbox";
 import { ProgressBar } from "./ProgressBar";
 import { Check } from "phosphor-react";
 import dayjs from "dayjs";
+import { HabitDayList } from "./HabitDayList";
 
 interface HabitDayProps {
   date?: Date;
@@ -42,27 +43,7 @@ const HabitDay = ({ completed = 0, amount = 0, date }: HabitDayProps) => {
 
           <ProgressBar progress={completedPercentage} />
 
-          <div className="mt-6 flex flex-col gap-3">
-            
-            <Checkbox.Root className="flex items-center gap-3 group">
-              <div
-                className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 
-              group-data-[state=checked]:bg-green-500
-              group-data-[state=checked]:border-green-500"
-              >
-                <Checkbox.CheckboxIndicator>
-                  <Check size={20} className="text-white" />
-                </Checkbox.CheckboxIndicator>
-              </div>
-
-              <span 
-              className="font-semibold text-xl text-white leading-tight
-              group-data-[state=checked]:line-through
-              group-data-[state=checked]:text-zinc-400">
-                Beber 2L de aguá
-              </span>
-            </Checkbox.Root>
-          </div>
+          <HabitDayList hDate={date} />
 
           <Popover.Arrow height={8} width={16} className="fill-zinc-900" />
         </Popover.Content>
