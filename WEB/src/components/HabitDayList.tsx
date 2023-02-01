@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 
 interface ListProps {
   hDate: Date;
+  onCompletedChanged: (completed : number) => void
 }
 
 interface HabitsInfo {
@@ -17,8 +18,9 @@ interface HabitsInfo {
   completedHabits: string[];
 }
 
-export const HabitDayList = ({ hDate }: ListProps) => {
+export const HabitDayList = ({ hDate, onCompletedChanged }: ListProps) => {
   const [habitsInfo, setHabitsInfo] = useState<HabitsInfo>();
+  const isDateInPast = dayjs(hDate).endOf("day").isBefore(new Date());
 
   useEffect(() => {
     api
@@ -32,7 +34,27 @@ export const HabitDayList = ({ hDate }: ListProps) => {
       });
   }, []);
 
-  const isDateInPast = dayjs(hDate).endOf('day').isBefore(new Date())
+  const handleToggleHabit = async (habitId: string) => {
+    await api.patch(`/habits/${habitId}/toggle`);
+    const completed = habitsInfo!.completedHabits.includes(habitId);
+
+    let completedHabits: string[] = [];
+
+    if (completed) {
+      completedHabits = habitsInfo!.completedHabits.filter(
+        (id) => id !== habitId
+      );
+    } else {
+      completedHabits = [...habitsInfo!.completedHabits, habitId];
+    }
+
+    setHabitsInfo({
+      possibleHabits: habitsInfo!.possibleHabits,
+      completedHabits,
+    });
+
+    onCompletedChanged(completedHabits.length)
+  };
 
   return (
     <div>
@@ -43,6 +65,7 @@ export const HabitDayList = ({ hDate }: ListProps) => {
               key={habit.id}
               checked={habitsInfo.completedHabits.includes(habit.id)}
               disabled={isDateInPast}
+              onCheckedChange={() => handleToggleHabit(habit.id)}
               className="flex items-center gap-3 group"
             >
               <div
