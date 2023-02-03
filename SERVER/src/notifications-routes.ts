@@ -9,7 +9,7 @@ const { publicKey, privateKey } = WebPush.generateVAPIDKeys();
 WebPush.setVapidDetails("http://localhost:3333", publicKey, privateKey);
 
 export async function notification(app: FastifyInstance) {
-  app.get("/push/publick_key", () => {
+  app.get("/push/public_key", () => {
     return { publicKey };
   });
 

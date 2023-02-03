@@ -2,6 +2,8 @@ import Header from "./components/Header";
 import SumaryTable from "./components/SumaryTable";
 import "./styles/global.css";
 import "./lib/dayjs";
+import { api } from "./lib/axios";
+import { CloudFog } from "phosphor-react";
 
 // window.Notification.requestPermission((permission) => {
 //   if (permission === "granted") {
@@ -12,6 +14,19 @@ import "./lib/dayjs";
 // });
 
 navigator.serviceWorker.register('service-worker.js')
+  .then(async serviceWorker => {
+    let subscription = await serviceWorker.pushManager.getSubscription()
+
+    if(!subscription){
+      const pkResponse = await api.get('/push/public_key')
+
+      subscription = await serviceWorker.pushManager.subscribe({
+        applicationServerKey: pkResponse.data.publicKey,
+      })
+    }
+
+    console.log(subscription)
+  })
 
 function App() {
   return (
