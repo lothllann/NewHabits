@@ -1,16 +1,17 @@
-import Habit from "./components/HabitDay";
 import Header from "./components/Header";
 import SumaryTable from "./components/SumaryTable";
 import "./styles/global.css";
 import "./lib/dayjs";
 
-window.Notification.requestPermission((permission) => {
-  if (permission === "granted") {
-    new window.Notification("Habits", {
-      body: "Texto",
-    });
-  }
-});
+// window.Notification.requestPermission((permission) => {
+//   if (permission === "granted") {
+//     new window.Notification("Habits", {
+//       body: "Texto",
+//     });
+//   }
+// });
+
+navigator.serviceWorker.register('service-worker.js')
 
 function App() {
   return (

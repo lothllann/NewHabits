@@ -2,9 +2,11 @@
   "dependencies": {
     "@fastify/cors": "^8.2.0",
     "@prisma/client": "^4.9.0",
+    "@types/web-push": "^3.3.2",
     "dayjs": "^1.11.7",
     "fastify": "^4.12.0",
     "node": "^18.13.0",
+    "web-push": "^3.5.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {

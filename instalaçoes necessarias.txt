@@ -35,6 +35,9 @@ npx prisma db seed
 CORS
 npm i @fastify/cors
 
+npm i web-push --> biblioteca de notificações
+npm i @types/web-push -D --> tipagem intelicense
+
 
 -------------------------------------------------------------------------------------------------------------------------
 
